@@ -1,0 +1,66 @@
+/*
+==================== Page 1 ====================
+*/
+
+.pg1 {
+
+}
+.pg1 h1 {
+   text-align: center;
+}
+
+/*
+==================== Page 2 ====================
+*/
+
+.pg2 {
+   display: flex;
+   flex-direction: column;
+}
+.pg2 h1 {
+   text-align: center;
+}
+.pg2 .row {
+   flex: 1;
+   display: flex;
+   flex-direction: row;
+}
+.pg2 .row div {
+   flex: 6;
+   padding: 16px;
+
+   /* Center Text */
+   display: flex;
+   flex-direction: column;
+   justify-content: center;
+   text-align: center;
+
+   background-color: #00000015;
+
+   border-right: 1px solid #0001;
+   border-left: 1px solid #0001;
+}
+.pg2 .row :nth-child(3) {
+   flex: 1;
+}
+.pg2 .row:hover {
+   background-color: #00000030;
+}
+.pg2 .row:first-child {
+   background-color: #fffa !important;
+   color: black;
+}
+.pg2 .row:nth-child(2n+3) {
+   background-color: #00000020;
+}
+
+/*
+==================== Page 3 ====================
+*/
+
+.pg3 {
+   text-align: center;
+}
+.pg3 div {
+   font-size: 1.5em;
+}

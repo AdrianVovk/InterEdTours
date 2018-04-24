@@ -1,0 +1,7 @@
+#!/usr/bin/env bash
+OLDDIR=`pwd`
+cd `dirname $0`/..
+micro data/translation-en.json
+./utils/gen-translations.js
+cd $OLDDIR
+echo Done

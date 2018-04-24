@@ -1,0 +1,35 @@
+{
+   "@!other-lang-id": "ru",
+   "@!other-lang": "Pусский",
+
+   "@title": "International Educational Tours",
+   "@about": "About Us",
+   "@schedule": "Schedule",
+   "@contact": "Contact",
+   "@filler": "This is not bee movie ipsum, I swear! ",
+
+   "@dates": "Trip Dates",
+   "@description": "Description",
+   "@startprice": "Starting Price",
+
+   "@number": "Phone Numbers",
+   "@email": "Email",
+   "@address": "Address",
+   "@fax": "Fax",
+   "@tollfree": "Toll Free",
+   "@or": "or",
+   "@atlanta": "Atlanta",
+   "@boston": "Boston",
+   "@chicago": "Chicago",
+   "@cincinnati": "Cincinnati",
+   "@cle": "Cleveland",
+   "@columbus": "Columbus",
+   "@detroit": "Detroit",
+   "@indianapolis": "Indianapolis",
+   "@louisville": "Louisville",
+   "@nyc": "New York",
+   "@pittsburgh": "Pittsburgh",
+   "@stlouis": "St. Louis",
+   "@toledo": "Toledo",
+   "@windsor": "Windsor, Ontario"
+}

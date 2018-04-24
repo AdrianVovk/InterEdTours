@@ -1,0 +1,157 @@
+@import url('https://fonts.googleapis.com/css?family=Open+Sans');
+@import url(./pages.css);
+
+/*
+=================== GENERAL ===================
+*/
+
+* {
+   font-family: 'Open Sans', sans;
+   user-select: none;
+   -moz-user-select: none;
+   -webkit-user-select: none;
+
+   transition-duration: 600ms;
+   transition-property: all;
+   transition-timing-function: cubic-bezier(0.19, 1, 0.22, 1);
+}
+
+html {
+   overflow-x: hidden;
+   overflow-y: scroll;
+   margin: 0;
+   padding: 0;
+}
+
+body {
+   width: 100vw;
+   overflow-y: visible;
+
+   background-color: #212121;
+   background: url(https://i.ytimg.com/vi/o-G57Aw37GM/maxresdefault.jpg);
+   background-size: cover;
+   background-repeat: no-repeat;
+
+   color: white;
+}
+
+/*
+=================== CONTENT AND PAGERS ===================
+*/
+
+#content {
+   width: 100vw;
+   height: 100vh;
+   position: absolute;
+   background-color: #0009;
+   display: flex;
+   flex-direction: column;
+   top: calc(50px - 100vh);
+   z-index: 5;
+}
+#content.expanded {
+   top: 0;
+}
+#content.expanded + #title {
+   opacity: 0;
+}
+
+#pager-wrap {
+   flex: 1;
+   overflow-x: hidden;
+   scroll-behavior: smooth;
+}
+#pager {
+   flex: 1;
+   display: flex;
+   flex-direction: row;
+   width: calc(100vw * 3);
+   overflow-y: hidden;
+   overflow-x: hidden;
+   height: 100%;
+}
+#pager div.page {
+   width: 100vw;
+   margin: 30px;
+   padding: 10px;
+   background-color: #212121;
+   overflow-y: scroll;
+}
+#pager div.page.zoomed {
+   margin: 0px !important;
+   padding: 40px !important;
+}
+
+p {
+   text-indent: 60px;
+}
+
+/*
+=================== NAVIGATION ===================
+*/
+
+#nav {
+   display: flex;
+   background-color: #0005;
+   margin: 0;
+   padding: 0;
+}
+#content.expanded #nav {
+   background-color: #0003;
+}
+#nav a {
+   flex: 1; /* Expand to fill as much space as possible */
+
+   /* Center Text */
+   display: flex;
+   flex-direction: column;
+   justify-content: center;
+   text-align: center;
+
+   padding: 10px;
+   text-decoration: none;
+   font-size: 1.5em;
+   height: 30px;
+}
+#nav a:hover {
+   background-color: #111;
+   color: white;
+}
+#content.expanded > #nav a:hover {
+   background-color: #ffffff44;
+   color: black;
+}
+#nav a.selected {
+   background-color: #212121 !important;;
+}
+#content.expanded > #nav a {
+   background-color: #11111155;
+   color: white;
+}
+
+/*
+=================== PAGE TITLE ===================
+*/
+
+#title {
+   padding: 20px;
+   background-color: #0007;
+   width: 100vw;
+   bottom: 0;
+   position: fixed;
+
+   font-size: 4em;
+   font-weight: bold;
+   transition-duration: 300ms;
+   z-index: 0;
+}
+#title a {
+   font-size: 0.3em;
+   position: absolute;
+   right: 70px;
+   bottom: 10px
+}
+
+/*
+=================== SLIDESHOW ===================
+*/
