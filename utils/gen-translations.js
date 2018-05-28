@@ -1,4 +1,5 @@
-#!/usr/bin/env node
+#! /usr/bin/env node
+
 // Imports
 const fs = require("fs")
 const translate = require("google-translate-api")
@@ -18,12 +19,12 @@ const english = JSON.parse(initialInput)
 const output = JSON.parse(initialInput)
 
 // Set other language
-output["@!other-lang-id"] = "en"
-output["@!other-lang"] = "English"
+output["@!other-lang-id@"] = "en"
+output["@!other-lang@"] = "English"
 
 // Translate
 for (key in english) {
-   if (!key.startsWith("@!")){
+   if (!key.startsWith("@!") && !key.startsWith("~")){
       processPhrase(key)
       tasks++;
    }
@@ -36,6 +37,10 @@ setInterval(() => {
 
 // When task completed
 finish = () => {
+	for (key in english) if (key.startsWith("~")) {
+		output[key.replace("~", "@")] = output[key];
+	}
+
    // Make case consistant
    doToFirst = (func, text) => {return (text.charAt(0)[func]() + text.slice(1))}
    for (key in english) {

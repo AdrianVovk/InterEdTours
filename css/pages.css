@@ -40,9 +40,9 @@
    border-right: 1px solid #0001;
    border-left: 1px solid #0001;
 }
-.pg2 .row :nth-child(3) {
+/*.pg2 .row :nth-child(3) {
    flex: 1;
-}
+}*/
 .pg2 .row:hover {
    background-color: #00000030;
 }
