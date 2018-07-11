@@ -43,17 +43,20 @@ setup = () => {
       zoom(false)
       $("#content").addClass("expanded")
 
-
-      if (!navChildren.hasClass("selected"))
-         $("#pager-wrap").css("scroll-behavior", "unset")
-      $("#pager-wrap").scrollLeft(index * window.innerWidth)
-      $("#pager-wrap").css("scroll-behavior", "")
-
+	  scrollToIndex(index)
 
       setTimeout(() => zoom(true), 500)
 
       deselectAllNav()
       $(navChildren[index]).addClass("selected")
+   }
+
+   $(window).resize(() => scrollToIndex(currentIndex))
+
+   scrollToIndex = (index) => {
+      $("#pager-wrap").stop().animate({
+      	 scrollLeft: index * window.innerWidth
+      }, 300);
    }
 
    // Touch gestures
@@ -82,5 +85,6 @@ createThemedCssRules = (color, text) => {
       .page, #nav a.selected {background-color:${color} !important; color:${text} !important;}
       #content.expanded > #nav a:hover {background-color: ${color}cc;color:${text};}
       .pg3 div {color: ${text};}
+      hr {color: ${text}; border-color: ${text}; background-color: ${text}; }
    </style>`).appendTo("body")
 }

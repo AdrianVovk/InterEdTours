@@ -68,7 +68,6 @@ body {
    width: calc(100vw * 3);
    overflow-y: hidden;
    overflow-x: hidden;
-   height: 100%;
 }
 #pager div.page {
    width: 100vw;

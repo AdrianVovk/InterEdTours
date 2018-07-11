@@ -8,11 +8,6 @@
    "@contact@": "Contact",
    "@wip@": "This section of the website is currently under development",
 
-   "@dates@": "Trip Dates",
-   "@destination@": "Destination",
-   "@features@": "Features",
-   "@price@": "Price",
-
    "@number@": "Phone Numbers",
    "@email@": "Email",
    "@address@": "Address",
@@ -34,13 +29,37 @@
    "@toledo@": "Toledo",
    "@windsor@": "Windsor, Ontario",
 
+   "######## Destinations ########": "",
+
+   "@dates@": "Trip Dates",
+   "@destination@": "Destination",
+   "@features@": "Features",
+   "@price@": "Starting At",
+   "~price@": "Цена от",
+
+   "@toronto-etc@": "Toronto & Niagara Falls",
+   "@toronto-dates@": "June 20-22",
+   "@toronto-features@": "Safari",
+   "@toronto-price@": "$329",
+
+   "@frcan@": "Franco-English Canada",
+   "~frcan@": "Франко-Английская Канада",
+   "@frcan-dates@": "July 27-31<br>August 30-September 3",
+   "@frcan-features@": "Toronto, Montreal, Ottawa, Quebec City, Niagara, Cruise \"1000 Islands\", Jazz festival, Jerusalem Panorama. Living in the center of Montreal",
+   "@frcan-price@": "$599",
+
+   "@boston@": "Boston, New England",
+   "@boston-dates@": "July 7-15",
+   "@boston-features@": "Vacation in Cape Cod, Boston, Tour of Harvard University, The Mayflower<br><br>OPTIONAL: Visit to Portland, Maine",
+   "@boston-price@": "$859<br><br>$899 with extra",
+   
+
    "@clearwater@": "Clearwater Beach, FL",
+   "@clearwater-dates@": "August 3-12",
+   
    "@miraclelk1@": "Miracle",
    "@miraclelk2@": "Lake, FL",
    "@frcan@": "French Canada",
    "@vegas@": "Las Vegas",
-   "@frencanada@": "Franco-English Canada",
-   "~frencanada@": "Франко-Английская Канада",
-   "@colorado@": "Colorodo-Glenwood Springs",
-   "@boston@": "Boston, New England"
+   "@colorado@": "Colorodo-Glenwood Springs"
 }
