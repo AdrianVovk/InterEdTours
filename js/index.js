@@ -4,27 +4,33 @@ palette = new ColorThief()
 $(() => {
    // Translation stuff
    replace = (search, out) => {
-      document.body.innerHTML = document.body.innerHTML.replace(new RegExp(search, "g"), out);
+      document.body.innerHTML = document.body.innerHTML.split(search).join(out)
       setup() // Correct errors that occur due to the body redeclaration. Also set up the page on first run
    }
    translate = () => $.getJSON(`data/translation-${location.hash.replace("#","")}.json`, (json) => { for (template in json) replace(template, json[template] + "\u200B") })
    untranslate = () => $.getJSON(`data/translation-${location.hash.replace("#","")}.json`, (json) => { for (template in json) replace(json[template] + "\u200B", template) })
    changeLanguage = (lang) => {
-      createThemedCssRules("transparent;", "transparent;")
+      createThemedCssRules("transparent", "transparent")
       setTimeout(() => {
        untranslate();
        location.hash = lang.substring(0,2);
        translate()
       }, 300)
-      setTimeout(onChangeImage, 800)
+      setTimeout(() => {
+      	currentImage--
+      	nextImage()
+      }, 800)
     }
    translate() // Set the language to the desired choice
 
    // Load Initial Image
+   currentImage = Math.floor(Math.random() * images.length) - 1
    nextImage()
 });
 
 setup = () => {
+   $("#slideshow").swipeleft(nextImage).swiperight(prevImage)
+   
    navChildren = $("#nav").children()
 
    deselectAllNav = () => navChildren.removeClass("selected")
@@ -35,6 +41,8 @@ setup = () => {
    zoom = (zoomed) => $("#pager div.page").toggleClass("zoomed", zoomed)
    $(document).on("keyup", (event) => {
       if (event.keyCode == 27) collapsePanel()
+      if (event.keyCode == 39) nextImage()
+      if (event.keyCode == 37) prevImage()
    })
 
    selectTab = (index) => {
@@ -69,8 +77,6 @@ setup = () => {
       zoom(false)
       setTimeout(collapsePanel, 200)
    })
-
-   $("#slideshow").swipeleft(nextImage).swiperight(prevImage)
 }
 
 images = [
@@ -81,14 +87,11 @@ images = [
 	"./res/13.jpg",
 	"./res/09.jpg",
 	"./res/15.jpg",
-	"./res/05.jpg",
 	"./res/03.jpg",
 	"./res/11.jpg",
 	"./res/02.jpg",
-	"./res/07.jpg",
 	"./res/14.jpg",
 	"./res/12.jpg",
-	"./res/04.jpg",
 ]
 currentImage = -1;
 imageInit = false;
