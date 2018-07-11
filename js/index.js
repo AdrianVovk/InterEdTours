@@ -20,7 +20,8 @@ $(() => {
     }
    translate() // Set the language to the desired choice
 
-   onChangeImage()
+   // Load Initial Image
+   nextImage()
 });
 
 setup = () => {
@@ -38,7 +39,7 @@ setup = () => {
 
    selectTab = (index) => {
       currentIndex = index
-      if ($(navChildren[index]).hasClass("selected")) return collapsePanel()
+      if ($(navChildren[index - 1]).hasClass("selected")) return collapsePanel()
 
       zoom(false)
       $("#content").addClass("expanded")
@@ -48,16 +49,18 @@ setup = () => {
       setTimeout(() => zoom(true), 500)
 
       deselectAllNav()
-      $(navChildren[index]).addClass("selected")
+      $(navChildren[index - 1]).addClass("selected")
    }
 
    $(window).resize(() => scrollToIndex(currentIndex))
 
    scrollToIndex = (index) => {
       $("#pager-wrap").stop().animate({
+      	 scrollTop: 0,
       	 scrollLeft: index * window.innerWidth
       }, 300);
    }
+   scrollToIndex (1);
 
    // Touch gestures
    currentIndex = -1;
@@ -66,15 +69,53 @@ setup = () => {
       zoom(false)
       setTimeout(collapsePanel, 200)
    })
+
+   $("#slideshow").swipeleft(nextImage).swiperight(prevImage)
 }
 
+images = [
+	"./res/01.jpg",
+	"./res/06.jpg",
+	"./res/08.jpg",
+	"./res/10.jpg",
+	"./res/13.jpg",
+	"./res/09.jpg",
+	"./res/15.jpg",
+	"./res/05.jpg",
+	"./res/03.jpg",
+	"./res/11.jpg",
+	"./res/02.jpg",
+	"./res/07.jpg",
+	"./res/14.jpg",
+	"./res/12.jpg",
+	"./res/04.jpg",
+]
+currentImage = -1;
+imageInit = false;
 onChangeImage = (index) => {
-   img = document.createElement("img")
-   img.src = "./res/img.jpg"
-   img.onload = () => {
-         color = one.color("rgb(" + palette.getColor(img).join() + ")")
-         createThemedCssRules(color.hex(), ((color.lightness() > 0.5) ? "#ffffff" : "#000000"))
-   }
+   	 $("#slideshow").attr("src", images[index])
+   	 imgChanged = true;
+}
+onImgLoad = () => {
+	if (imgChanged) {
+		color = one.color("rgb(" + palette.getColor($("#slideshow")[0]).join() + ")")
+		createThemedCssRules(color.hex(), ((color.lightness() < 0.5) ? "#ffffff" : "#000000"))
+		imgChanged = false;
+	}
+}
+nextImage = () => {
+	currentImage++;
+	if (currentImage >= images.length) {
+		currentImage = 0;
+	}
+	onChangeImage(currentImage)
+}
+prevImage = () => {
+	currentImage--;
+	if (currentImage < 0) {
+		currentImage = images.length - 1;
+	}
+	onChangeImage(currentImage)
 }
 
 createThemedCssRules = (color, text) => {
@@ -86,5 +127,6 @@ createThemedCssRules = (color, text) => {
       #content.expanded > #nav a:hover {background-color: ${color}cc;color:${text};}
       .pg3 div {color: ${text};}
       hr {color: ${text}aa; border-color: ${text}aa; background-color: ${text}aa; }
+      .previmg, .nextimg { background-color: ${color}cc; color: ${text} }
    </style>`).appendTo("body")
 }

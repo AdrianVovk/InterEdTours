@@ -28,11 +28,18 @@ body {
    overflow-y: visible;
 
    background-color: #212121;
-   background: url(https://i.ytimg.com/vi/o-G57Aw37GM/maxresdefault.jpg);
-   background-size: cover;
-   background-repeat: no-repeat;
-
    color: white;
+   
+   /*background: url(https://i.ytimg.com/vi/o-G57Aw37GM/maxresdefault.jpg);*/
+   /*background-size: cover;*/
+   /*background-repeat: no-repeat;*/
+}
+
+#slideshow {
+	width: 100vw;
+	height: 100vh;
+	object-fit: cover;
+	z-index: 0;
 }
 
 /*
@@ -53,6 +60,10 @@ body {
    top: 0;
 }
 #content.expanded + #title {
+   opacity: 0;
+}
+
+#content.expanded + .previmg {
    opacity: 0;
 }
 
@@ -142,7 +153,7 @@ p {
    font-size: 4em;
    font-weight: bold;
    transition-duration: 300ms;
-   z-index: 0;
+   z-index: 1;
 }
 #title a {
    font-size: 0.3em;
@@ -154,3 +165,30 @@ p {
 /*
 =================== SLIDESHOW ===================
 */
+
+.previmg, .nextimg {
+	top: calc(50vh - 50px);
+	margin: auto;
+	width: 45px;
+	height: 50px;
+	position: fixed;
+	font-size: 1.5em;
+
+	display: flex;
+	text-align: center;
+	justify-content: center;
+	flex-direction: column;
+	z-index: 2;
+}
+.previmg:hover, .nextimg:hover {
+	background-color: #212121;
+	color: #fff;
+}
+
+.previmg {
+	left: 0;
+}
+
+.nextimg {
+	right: 0;
+}

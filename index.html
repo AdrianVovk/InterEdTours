@@ -103,12 +103,16 @@
             </div>
          </div>
          <ul id="nav">
-            <a onclick="selectTab(0)">@about@</a>
+            <!-- <a onclick="selectTab(0)">@about@</a> -->
             <a onclick="selectTab(1)">@schedule@</a>
             <a onclick="selectTab(2)">@contact@</a>
          </ul>
       </div>
 
       <div id="title">@title@<a onclick="changeLanguage('@!other-lang-id@')">@!other-lang@</a></div>
+      
+      <div class=previmg onclick=prevImage()>←</div>
+      <div class=nextimg onclick=nextImage()>→</div>
+      <img id=slideshow onload=onImgLoad()>
    </body>
 </html>

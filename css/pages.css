@@ -25,6 +25,7 @@
    flex-grow: 1;
    flex-direction: row;
    overflow: visible;
+   transition-duration: 200ms !important;
 }
 .pg2 .message {
 	justify-content: center;
@@ -32,6 +33,9 @@
 	font-weight: bold;
 	background-color: #AA0000AA;
 	padding: 16px;
+}
+.pg2 .message:hover {
+	background-color: #AA0000CC;
 }
 .pg2 .row div {
    flex: 6;
@@ -48,18 +52,21 @@
    border-right: 1px solid #0001;
    border-left: 1px solid #0001;
 }
-/*.pg2 .row :nth-child(3) {
-   flex: 1;
-}*/
+.pg2 .row:nth-child(2) {
+   background-color: #fffa !important;
+   color: black !important;
+}
+.pg2 .row:nth-child(2):hover {
+	background-color: #fffc !important;
+}
 .pg2 .row:hover {
    background-color: #00000030;
 }
-.pg2 .row:nth-child(2) {
-   background-color: #fffa !important;
-   color: black;
-}
-.pg2 .row:nth-child(2n+3) {
+.pg2 .row:nth-child(2n+2) {
    background-color: #00000020;
+}
+.pg2 .row:nth-child(2n+2):hover {
+   background-color: #00000040;
 }
 
 /*
