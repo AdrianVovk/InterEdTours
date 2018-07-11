@@ -26,6 +26,13 @@
    flex-direction: row;
    overflow: visible;
 }
+.pg2 .message {
+	justify-content: center;
+	text-align: center;
+	font-weight: bold;
+	background-color: #AA0000AA;
+	padding: 16px;
+}
 .pg2 .row div {
    flex: 6;
    padding: 16px;
@@ -47,7 +54,7 @@
 .pg2 .row:hover {
    background-color: #00000030;
 }
-.pg2 .row:first-child {
+.pg2 .row:nth-child(2) {
    background-color: #fffa !important;
    color: black;
 }

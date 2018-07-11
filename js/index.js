@@ -80,11 +80,11 @@ onChangeImage = (index) => {
 createThemedCssRules = (color, text) => {
    $("#colors").remove()
    $(`<style id="colors">
-      #content {background-color:${color}99}
+	  #content {background-color:${color}99}
       #title,#nav {background-color:${color}DD; color:${text} !important;}
       .page, #nav a.selected {background-color:${color} !important; color:${text} !important;}
       #content.expanded > #nav a:hover {background-color: ${color}cc;color:${text};}
       .pg3 div {color: ${text};}
-      hr {color: ${text}; border-color: ${text}; background-color: ${text}; }
+      hr {color: ${text}aa; border-color: ${text}aa; background-color: ${text}aa; }
    </style>`).appendTo("body")
 }

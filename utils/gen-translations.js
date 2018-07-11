@@ -37,6 +37,7 @@ setInterval(() => {
 
 // When task completed
 finish = () => {
+	// Include manual overrides
 	for (key in english) if (key.startsWith("~")) {
 		output[key.replace("~", "@")] = output[key];
 	}

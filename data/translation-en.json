@@ -31,6 +31,7 @@
 
    "######## Destinations ########": "",
 
+   "@table-message@": "Please call us to verify this information or with any questions. Thank you!",
    "@dates@": "Trip Dates",
    "@destination@": "Destination",
    "@features@": "Features",
@@ -42,24 +43,39 @@
    "@toronto-features@": "Safari",
    "@toronto-price@": "$329",
 
+   "@boston@": "Boston, New England",
+   "@boston-dates@": "July 7-15",
+   "@boston-features@": "Vacation in Cape Cod, Boston, Tour of Harvard University, The Mayflower<br><br>OPTIONAL: Visit to Portland, Maine",
+   "@boston-price@": "$859<br><br>$899 with extra",
+
    "@frcan@": "Franco-English Canada",
    "~frcan@": "Франко-Английская Канада",
    "@frcan-dates@": "July 27-31<br>August 30-September 3",
    "@frcan-features@": "Toronto, Montreal, Ottawa, Quebec City, Niagara, Cruise \"1000 Islands\", Jazz festival, Jerusalem Panorama. Living in the center of Montreal",
    "@frcan-price@": "$599",
 
-   "@boston@": "Boston, New England",
-   "@boston-dates@": "July 7-15",
-   "@boston-features@": "Vacation in Cape Cod, Boston, Tour of Harvard University, The Mayflower<br><br>OPTIONAL: Visit to Portland, Maine",
-   "@boston-price@": "$859<br><br>$899 with extra",
-   
+   "@virginiabeach@": "Virginia Beach",
+   "@virginiabeach-dates@": "July 22-28",
+   "@virginiabeach-features@": "FOR THE FIRST TIME!<br><br>Vacation at the beach, visit colonial Williamsburg & Jamestown, Yorkville, visit of the largest Naval base at Navel Station Norfolk",
+   "@virginiabeach-price@": "$599",
 
-   "@clearwater@": "Clearwater Beach, FL",
+   "@clearwater@": "Clearwater Beach, Florida",
    "@clearwater-dates@": "August 3-12",
-   
-   "@miraclelk1@": "Miracle",
-   "@miraclelk2@": "Lake, FL",
-   "@frcan@": "French Canada",
-   "@vegas@": "Las Vegas",
-   "@colorado@": "Colorodo-Glenwood Springs"
+   "@clearwater-features@": "Wonderful resort on the Gulf of Mexico, white sand, beautiful water, vacation under Palm trees, visit museum of Salvador Dali (St. Petersburg).<br><br>OPTIONAL: Food for $70 per week.",
+   "@clearwater-price@": "$799 + flight",
+
+   "@nmich@": "Northern Michigan",
+   "@nmich-dates@": "August 25-28",
+   "@nmich-features@": "Sleeping Bear National Park, Sand dunes, Mackinac Island",
+   "@nmich-price@": "$459",
+
+   "@colorado@": "Colorodo-Glenwood Springs",
+   "@colorado-dates@": "September: 6, 11, 16, 23, 30",
+   "@colorado-features@": "The most famous balneological resort of the USA in the Rocky Mountains. Olympic-size pool with mineral water at 30-32&deg;C. Vapor caves (Native American healing baths). Entrance tickets, stay at a wonderful 5 star hotel above the pool, dietary food, Slavic kitchen, Polish restaurant, trips to surrounding areas",
+   "@colorado-price@": "$1130 + flight (10 days)",
+
+   "@cruise@": "Cruise: Cuba, Jamaica, Mexica, Cayman Islands",
+   "@cruise-dates@": "December 8-15<br><br>Call us to verify these dates.",
+   "@cruise-features@": "Includes flight and a room with a window",
+   "@cruise-price@": "$1,499"
 }
