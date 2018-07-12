@@ -28,6 +28,7 @@ $(() => {
    // Load Initial Image
    currentImage = Math.floor(Math.random() * images.length) - 1
    nextImage()
+   startSlideshow()
 });
 
 setup = () => {
@@ -37,12 +38,13 @@ setup = () => {
    collapsePanel = () => {
       deselectAllNav()
       $("#content").removeClass("expanded")
+      startSlideshow()
    }
    zoom = (zoomed) => $("#pager div.page").toggleClass("zoomed", zoomed)
    $(document).on("keyup", (event) => {
-      if (event.keyCode == 27) collapsePanel()
-      if (event.keyCode == 39) nextImage()
-      if (event.keyCode == 37) prevImage()
+      if (event.keyCode == 27) collapsePanel();
+      if (event.keyCode == 39) nextImage(true);
+      if (event.keyCode == 37) prevImage(true);
    })
    currentIndex = -1;
    selectTab = (index) => {
@@ -52,6 +54,8 @@ setup = () => {
       $("#content").addClass("expanded")
 
 	  scrollToIndex(index)
+
+	  stopSlideshow()
 
       deselectAllNav()
       $(navChildren[index - 1]).addClass("selected")
@@ -70,7 +74,7 @@ setup = () => {
    scrollToIndex (1);
 
    // Touch gestures
-   $("#slideshow").swipeleft(nextImage).swiperight(prevImage)
+   $("#slideshow").swipeleft(() => nextImage(true)).swiperight(() => prevImage(true))
 }
 
 images = [
@@ -89,9 +93,18 @@ images = [
 ]
 currentImage = -1;
 imageInit = false;
+slideshowTimer = -1;
+slideshowRestart = -1;
+startSlideshow = () => {
+	slideshowTimer = setInterval(nextImage, 10000)
+}
+stopSlideshow = () => clearInterval(slideshowTimer)
 onChangeImage = (index) => {
-   	 $("#slideshow").attr("src", images[index])
-   	 imgChanged = true;
+   	 $("#slideshow").fadeOut(500, () => {
+   	 	$("#slideshow").attr("src", images[index]).fadeIn(500)
+   	 	imgChanged = true;
+   	 })
+   	 createThemedCssRules("transparent;", "transparent;")
 }
 onImgLoad = () => {
 	if (imgChanged) {
@@ -100,14 +113,24 @@ onImgLoad = () => {
 		imgChanged = false;
 	}
 }
-nextImage = () => {
+nextImage = (fromInput) => {
+	if (fromInput) {
+		stopSlideshow()
+		clearTimeout(slideshowRestart)
+		slideshowRestart = setTimeout(startSlideshow, 15000)
+	}
 	currentImage++;
 	if (currentImage >= images.length) {
 		currentImage = 0;
 	}
 	onChangeImage(currentImage)
 }
-prevImage = () => {
+prevImage = (fromInput) => {
+	if (fromInput) {
+		stopSlideshow()
+		clearTimeout(slideshowRestart)
+		slideshowRestart = setTimeout(startSlideshow, 15000)
+	}
 	currentImage--;
 	if (currentImage < 0) {
 		currentImage = images.length - 1;
@@ -125,5 +148,5 @@ createThemedCssRules = (color, text) => {
       .pg3 div {color: ${text};}
       hr {color: ${text}aa; border-color: ${text}aa; background-color: ${text}aa; }
       .previmg, .nextimg { background-color: ${color}cc; color: ${text} }
-   </style>`).appendTo("body")
+   </style>`).appendTo("head")
 }
