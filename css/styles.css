@@ -13,7 +13,7 @@
 
    transition-duration: 600ms;
    transition-property: all;
-//   transition-timing-function: cubic-bezier(0.19, 1, 0.22, 1);
+   /*transition-timing-function: cubic-bezier(0.19, 1, 0.22, 1);*/
 }
 
 html {
@@ -74,6 +74,7 @@ body {
    display: flex;
    flex-direction: row;
    width: calc(100vw * 3);
+   height: 100%;
 }
 #pager div.page {
    width: 100vw;
