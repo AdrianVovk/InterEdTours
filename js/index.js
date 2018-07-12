@@ -5,9 +5,11 @@ $(() => {
    // Translation stuff
    replace = (search, out) => {
       document.body.innerHTML = document.body.innerHTML.split(search).join(out)
-      setup() // Correct errors that occur due to the body redeclaration. Also set up the page on first run
    }
-   translate = () => $.getJSON(`data/translation-${location.hash.replace("#","")}.json`, (json) => { for (template in json) replace(template, json[template] + "\u200B") })
+   translate = () => $.getJSON(`data/translation-${location.hash.replace("#","")}.json`, (json) => { 
+      for (template in json) replace(template, json[template] + "\u200B")
+      setup() // Correct errors that occur due to the body redeclaration. Also set up the page on first run
+   })
    untranslate = () => $.getJSON(`data/translation-${location.hash.replace("#","")}.json`, (json) => { for (template in json) replace(json[template] + "\u200B", template) })
    changeLanguage = (lang) => {
       createThemedCssRules("transparent", "transparent")
@@ -29,8 +31,6 @@ $(() => {
 });
 
 setup = () => {
-   $("#slideshow").swipeleft(nextImage).swiperight(prevImage)
-   
    navChildren = $("#nav").children()
 
    deselectAllNav = () => navChildren.removeClass("selected")
@@ -44,17 +44,14 @@ setup = () => {
       if (event.keyCode == 39) nextImage()
       if (event.keyCode == 37) prevImage()
    })
-
+   currentIndex = -1;
    selectTab = (index) => {
       currentIndex = index
       if ($(navChildren[index - 1]).hasClass("selected")) return collapsePanel()
-
-      zoom(false)
+      
       $("#content").addClass("expanded")
 
 	  scrollToIndex(index)
-
-      setTimeout(() => zoom(true), 500)
 
       deselectAllNav()
       $(navChildren[index - 1]).addClass("selected")
@@ -63,20 +60,17 @@ setup = () => {
    $(window).resize(() => scrollToIndex(currentIndex))
 
    scrollToIndex = (index) => {
-      $("#pager-wrap").stop().animate({
+      $("#pager-wrap").removeClass("lock").stop().animate({
       	 scrollTop: 0,
       	 scrollLeft: index * window.innerWidth
-      }, 300);
+      }, 500, () => {	
+      	  setTimeout (() => $("#pager-wrap").addClass("lock"), 500);
+      });
    }
    scrollToIndex (1);
 
    // Touch gestures
-   currentIndex = -1;
-   $('#pager-wrap').swipeleft(function(e) { selectTab(currentIndex + 1) }).swiperight(function(e) { selectTab(currentIndex - 1) })
-   $("#pager-wrap").tap(() => {
-      zoom(false)
-      setTimeout(collapsePanel, 200)
-   })
+   $("#slideshow").swipeleft(nextImage).swiperight(prevImage)
 }
 
 images = [

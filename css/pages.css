@@ -14,18 +14,20 @@
 */
 
 .pg2 {
-   display: flex;
-   flex-direction: column;
-}
-.pg2 h1 {
-   text-align: center;
+   display: block;
 }
 .pg2 .row {
    display: flex;
    flex-grow: 1;
    flex-direction: row;
-   overflow: visible;
+   overflow-y: visible;
+   overflow-x: visible;
    transition-duration: 200ms !important;
+}
+@media only screen and (max-width: 480px) {
+	.pg2 .row {
+		display: block;
+	}
 }
 .pg2 .message {
 	justify-content: center;
@@ -33,6 +35,7 @@
 	font-weight: bold;
 	background-color: #AA0000AA;
 	padding: 16px;
+	flex-grow: 1;
 }
 .pg2 .message:hover {
 	background-color: #AA0000CC;
@@ -49,8 +52,7 @@
 
    background-color: #00000015;
 
-   border-right: 1px solid #0001;
-   border-left: 1px solid #0001;
+   border: 1px solid #0001;
 }
 .pg2 .row:nth-child(2) {
    background-color: #fffa !important;
