@@ -104,7 +104,7 @@ onChangeImage = (index) => {
    	 	$("#slideshow").attr("src", images[index]).fadeIn(500)
    	 	imgChanged = true;
    	 })
-   	 createThemedCssRules("transparent;", "transparent;")
+   	 $("#colors").remove()
 }
 onImgLoad = () => {
 	if (imgChanged) {
