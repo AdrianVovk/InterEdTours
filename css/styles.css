@@ -160,10 +160,10 @@ p {
 */
 
 .previmg, .nextimg {
-	top: calc(50vh - 50px);
+	top: calc(50vh - 40px);
 	margin: auto;
 	width: 45px;
-	height: 50px;
+	height: 80px;
 	position: fixed;
 	font-size: 1.5em;
 
