@@ -2,6 +2,8 @@ if (!location.hash) location.hash = "ru" // The default language
 palette = new ColorThief()
 
 $(() => {
+   $("#seo").remove()
+
    // Translation stuff
    replace = (search, out) => {
       document.body.innerHTML = document.body.innerHTML.split(search).join(out)
@@ -16,12 +18,12 @@ $(() => {
       setTimeout(() => {
        untranslate();
        location.hash = lang.substring(0,2);
-       translate()
+       location.reload()
       }, 300)
-      setTimeout(() => {
+/*      setTimeout(() => {
       	currentImage--
       	nextImage()
-      }, 800)
+      }, 800)*/
     }
    translate() // Set the language to the desired choice
 
@@ -45,11 +47,13 @@ setup = () => {
       if (event.keyCode == 27) collapsePanel();
       if (event.keyCode == 39) nextImage(true);
       if (event.keyCode == 37) prevImage(true);
+      if (event.keyCode == 49) selectTab(0);
+      if (event.keyCode == 50) selectTab(1);
    })
    currentIndex = -1;
    selectTab = (index) => {
       currentIndex = index
-      if ($(navChildren[index - 1]).hasClass("selected")) return collapsePanel()
+      if ($(navChildren[index]).hasClass("selected")) return collapsePanel()
       
       $("#content").addClass("expanded")
 
@@ -58,20 +62,22 @@ setup = () => {
 	  stopSlideshow()
 
       deselectAllNav()
-      $(navChildren[index - 1]).addClass("selected")
+      $(navChildren[index]).addClass("selected")
    }
 
    $(window).resize(() => scrollToIndex(currentIndex))
 
+   scrollTimeout = -1;
    scrollToIndex = (index) => {
       $("#pager-wrap").removeClass("lock").stop().animate({
       	 scrollTop: 0,
       	 scrollLeft: index * window.innerWidth
       }, 500, () => {	
-      	  setTimeout (() => $("#pager-wrap").addClass("lock"), 500);
+      	  clearTimeout(scrollTimeout)
+      	  scrollTimeout = setTimeout (() => $("#pager-wrap").addClass("lock"), 500);
       });
    }
-   scrollToIndex (1);
+   scrollToIndex (0);
 
    // Touch gestures
    $("#slideshow").swipeleft(() => nextImage(true)).swiperight(() => prevImage(true))
