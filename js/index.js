@@ -2,28 +2,29 @@ if (!location.hash) location.hash = "ru" // The default language
 palette = new ColorThief()
 
 $(() => {
-   $("title").text("@title@");
-
    // Translation stuff
    replace = (search, out) => {
+      if (search == "@title@" || out == "@title@") {
+      	$("title").text(out)
+      }
       document.body.innerHTML = document.body.innerHTML.split(search).join(out)
    }
    translate = () => $.getJSON(`data/translation-${location.hash.replace("#","")}.json`, (json) => { 
+      //$("title").text("@title@");
       for (template in json) replace(template, json[template] + "\u200B")
       setup() // Correct errors that occur due to the body redeclaration. Also set up the page on first run
    })
-   untranslate = () => $.getJSON(`data/translation-${location.hash.replace("#","")}.json`, (json) => { for (template in json) replace(json[template] + "\u200B", template) })
+   untranslate = () => $.getJSON(`data/translation-${location.hash.replace("#","")}.json`, (json) => { 
+      //$("title").text("@title@");
+   	  for (template in json) replace(json[template] + "\u200B", template) 
+   	  setup()
+   })
    changeLanguage = (lang) => {
       createThemedCssRules("transparent", "transparent")
       setTimeout(() => {
-       untranslate();
        location.hash = lang.substring(0,2);
        location.reload()
       }, 300)
-/*      setTimeout(() => {
-      	currentImage--
-      	nextImage()
-      }, 800)*/
     }
    translate() // Set the language to the desired choice
 
