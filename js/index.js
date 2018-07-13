@@ -2,7 +2,7 @@ if (!location.hash) location.hash = "ru" // The default language
 palette = new ColorThief()
 
 $(() => {
-   $("#seo").remove()
+   $("title").text("@title@");
 
    // Translation stuff
    replace = (search, out) => {
